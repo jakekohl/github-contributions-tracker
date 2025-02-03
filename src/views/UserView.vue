@@ -1,4 +1,5 @@
 <script>
+import { markRaw } from 'vue'
 import OverviewPanel from '@/components/UserCard/OverviewPanel.vue'
 import CommitsPanel from '@/components/UserCard/CommitsPanel.vue'
 import PullRequestsPanel from '@/components/UserCard/PullRequestsPanel.vue'
@@ -12,27 +13,27 @@ export default {
       tabs: [
         {
           title: 'Overview',
-          component: OverviewPanel,
+          component: markRaw(OverviewPanel),
           value: '0',
         },
         {
           title: 'Commits',
-          component: CommitsPanel,
+          component: markRaw(CommitsPanel),
           value: '1',
         },
         {
           title: 'Pull Requests',
-          component: PullRequestsPanel,
+          component: markRaw(PullRequestsPanel),
           value: '2',
         },
         {
           title: 'Code Reviews',
-          component: CodeReviewsPanel,
+          component: markRaw(CodeReviewsPanel),
           value: '3',
         },
         {
           title: 'Issues',
-          component: IssuesPanel,
+          component: markRaw(IssuesPanel),
           value: '4',
         },
       ],
@@ -60,9 +61,11 @@ export default {
     <template #title>
       <span class="p-mr-2">
         <Avatar size="large" class="p-mr-2 gap-2" />
+        <span /> <span /> <span />
         <span class="p-mr-2 gap-2">USERNAME GOES HERE</span>
+        <span /> <span /> <span />
         <span class="p-mr-2 gap-2">
-          <Button icon="pi pi-sync" aria-label="Sync" size="small" rounded />
+          <Button icon="pi pi-sync" aria-label="Sync" size="small" rounded raised @click="" />
         </span>
         <h2 class="p-mr-2">Your Stats</h2>
       </span>
