@@ -3,6 +3,7 @@
     <Menubar :model="items">
       <template #start>
         <i class="pi pi-github p-mr-2" style="font-size: 1.5rem" />
+        <Divider layout="vertical" />
       </template>
       <template #item="{ item, props, hasSubmenu }">
         <div class="card">
@@ -20,18 +21,9 @@
         </div>
       </template>
       <template #end>
-        <div class="card flex justify-center">
+        <div class="card flex">
           <ButtonGroup>
-            <Button icon="pi pi-sun" label="Theme" rounded size="small" />
-            <Button
-              as="a"
-              label="Source Code"
-              href="https://github.com/jakekohl/github-contributions-tracker"
-              target="_blank"
-              rel="noopener noreferrer"
-              rounded
-              size="small"
-            />
+            <Button icon="pi pi-sun" aria-label="Theme" rounded size="small" />
           </ButtonGroup>
         </div>
       </template>
