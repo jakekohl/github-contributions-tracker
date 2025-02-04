@@ -8,8 +8,8 @@
     "dev:doppler": "doppler run -- npm run dev",
     "vercel:dev": "vercel dev",
     "vercel:dev:doppler": "doppler run -- npm run vercel:dev",
-    "vercel:build": "vercel build",
     "build": "vite build",
+    "build:doppler": "doppler run -- npm run build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
