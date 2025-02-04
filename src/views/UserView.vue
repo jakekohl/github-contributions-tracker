@@ -9,6 +9,7 @@ import IssuesPanel from '@/components/UserCard/IssuesPanel.vue'
 // Services
 import { markRaw } from 'vue'
 import { useToast } from 'primevue/usetoast'
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'UserView',
@@ -78,6 +79,12 @@ export default {
         })
       }, 5000)
     },
+    routerUpdate() {
+      const tab = this.tabs.find((tab) => tab.value === this.$router.currentRoute.value.query.tab)
+      if (tab) {
+        this.$router.push({ query: { tab: tab.value } })
+      }
+    },
   },
   created() {
     this.loadUserStats()
@@ -108,7 +115,7 @@ export default {
       </span>
     </template>
     <template #content>
-      <Tabs value="0">
+      <Tabs value="0" @change="routerUpdate()">
         <TabList>
           <Tab v-ripple v-for="tab in tabs" :key="tab.title" :value="tab.value">{{
             tab.title
