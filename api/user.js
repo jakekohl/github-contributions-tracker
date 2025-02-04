@@ -4,7 +4,7 @@ import {
   getSingleUserByUsername,
   getUsers,
   addUser,
-} from '../lib/user.js'
+} from './_user.js'
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url)
