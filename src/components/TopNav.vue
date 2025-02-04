@@ -2,8 +2,9 @@
   <div class="card top-nav">
     <Menubar :model="items">
       <template #start>
-        <i class="pi pi-github p-mr-2" style="font-size: 1.5rem" />
-        <Divider layout="vertical" />
+        <RouterLink to="/">
+          <i class="pi pi-github p-mr-2" style="font-size: 1.5rem" />
+        </RouterLink>
       </template>
       <template #item="{ item, props, hasSubmenu }">
         <div class="card">
@@ -39,9 +40,9 @@ const router = useRouter()
 
 const items = ref([
   {
-    label: 'Home',
-    icon: 'pi pi-home',
-    command: () => router.push({ name: 'home' }),
+    label: 'About',
+    icon: 'pi pi-info-circle',
+    command: () => router.push({ name: 'about' }),
   },
   {
     label: 'Your GitHub Stats',

@@ -35,14 +35,11 @@ const linkMenu = [
 <template>
   <Toolbar class="bottom-info fixed-bottom">
     <template #start>
-      <RouterLink>
-        <Button icon="pi pi-question" raised @click="router.push('/faq')" />
+      <RouterLink to="/faq">
+        <Button icon="pi pi-question" raised rounded variant="text" />
       </RouterLink>
-
-      <Divider layout="vertical" />
     </template>
     <template #end>
-      <Divider layout="vertical" />
       <div>Personal project by <a href="https://github.com/jakekohl">Jacob Kohl</a></div>
       <Divider layout="vertical" />
       <Button

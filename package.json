@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:doppler": "doppler run -- npm run dev",
+    "vercel:dev": "vercel dev",
+    "vercel:dev:doppler": "doppler run -- npm run vercel:dev",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
@@ -30,7 +33,7 @@
     "mongodb": "^6.12.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.2.5",
-    "vercel": "^39.3.0",
+    "vercel": "^40.1.0",
     "vue": "^3.5.13",
     "vue-ripple-directive": "^2.0.1",
     "vue-router": "^4.5.0"
