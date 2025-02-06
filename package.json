@@ -27,11 +27,11 @@
   "dependencies": {
     "@primevue/themes": "^4.2.5",
     "@vercel/functions": "^1.6.0",
+    "axios": "^1.7.9",
     "doppler": "^1.0.0",
     "dotenv": "^16.4.7",
-    "graphql": "^16.10.0",
-    "graphql-request": "^7.1.2",
     "mongodb": "^6.12.0",
+    "octokit": "^4.1.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.2.5",
     "vercel": "^40.1.0",
