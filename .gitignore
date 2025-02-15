@@ -31,3 +31,8 @@ coverage
 *.tsbuildinfo
 
 .vercel
+
+# Cypress
+cypress/screenshots
+cypress/videos
+cypress/downloads
