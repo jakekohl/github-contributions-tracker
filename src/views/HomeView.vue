@@ -1,6 +1,7 @@
-<script>
-const scope = 'repo:status,read:user,user:email'
-const client_id = 'Ov23liTaeCMMntMoXZBp'
+<script setup>
+const scope = import.meta.env.VITE_GH_SCOPES
+const client_id = import.meta.env.VITE_GH_CLIENT_ID
+const redirect_uri = import.meta.env.VITE_GH_REDIRECT_URI
 </script>
 
 <template>
@@ -11,6 +12,6 @@ const client_id = 'Ov23liTaeCMMntMoXZBp'
     as="a"
     label="Get Started"
     icon="pi pi-github"
-    :href="`https://github.com/login/oauth/authorize?scope=${scope}&client_id=${client_id}`"
+    :href="`https://github.com/login/oauth/authorize?scope=${scope}&client_id=${client_id}&redirect_uri=${redirect_uri}`"
   />
 </template>

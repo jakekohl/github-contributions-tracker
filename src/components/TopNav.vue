@@ -22,11 +22,11 @@
         </div>
       </template>
       <template #end>
-        <div class="card flex">
-          <ButtonGroup>
-            <Button icon="pi pi-sun" aria-label="Theme" rounded size="small" />
-          </ButtonGroup>
-        </div>
+        <span>
+          <router-link to="/faq" v-ripple>
+            <i class="pi pi-question-circle p-mr-2" style="font-size: 1.5rem" />
+          </router-link>
+        </span>
       </template>
     </Menubar>
   </div>
