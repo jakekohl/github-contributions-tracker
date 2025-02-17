@@ -14,12 +14,10 @@ dist-ssr
 coverage
 *.local
 
-/cypress/videos/
-/cypress/screenshots/
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 *.suo
 *.ntvs*
@@ -27,9 +25,11 @@ coverage
 *.sln
 *.sw?
 .env
+.projects
 
 *.tsbuildinfo
 
+# Vercel
 .vercel
 
 # Cypress
