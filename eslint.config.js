@@ -25,7 +25,7 @@ export default [
 
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
-  ...pluginCypress.configs.recommended,
-  ...pluginChaiFriendly.configs.recommendedFlat,
+  pluginCypress.configs.recommended,
+  pluginChaiFriendly.configs.recommendedFlat,
   skipFormatting,
 ]

@@ -2,7 +2,7 @@ import { defineConfig } from 'cypress'
 
 export default defineConfig({
   e2e: {
-    env: {},
+    baseUrl: 'http://localhost:5137',
     numTestsKeptInMemory: 50,
     retries: {
       runMode: 2,
@@ -20,4 +20,5 @@ export default defineConfig({
       // implement node event listeners here
     },
   },
+  env: {},
 })
