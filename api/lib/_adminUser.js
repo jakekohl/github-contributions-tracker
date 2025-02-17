@@ -25,7 +25,8 @@ export async function getUsers() {
     const collection = client.db(dbName).collection(process.env.MONGO_DB_USER_COLLECTION)
     const data = await collection.find(query).toArray()
     console.debug(`Found ${data.length} user${data.length > 1 ? 's' : ''}: ${JSON.stringify(data)}`)
-    return JSON.stringify(data)
+    const sanitizedData = sanitizeData(data)
+    return JSON.stringify(sanitizedData)
   } catch (err) {
     console.error(err)
   }
@@ -45,7 +46,8 @@ export async function getSingleUserByUsername(username) {
     const collection = client.db(dbName).collection(process.env.MONGO_DB_USER_COLLECTION)
     const data = await collection.find(query).toArray()
     console.debug(`Found ${data.length} user${data.length > 1 ? 's' : ''}: ${JSON.stringify(data)}`)
-    return JSON.stringify(data)
+    const sanitizedData = sanitizeData(data)
+    return JSON.stringify(sanitizedData)
   } catch (err) {
     console.error(err)
   }
@@ -65,7 +67,8 @@ export async function getSingleUserById(id) {
     const collection = client.db(dbName).collection(process.env.MONGO_DB_USER_COLLECTION)
     const data = await collection.find(query).toArray()
     console.debug(`Found ${data.length} user${data.length > 1 ? 's' : ''}: ${JSON.stringify(data)}`)
-    return JSON.stringify(data)
+    const sanitizedData = sanitizeData(data)
+    return JSON.stringify(sanitizedData)
   } catch (err) {
     console.error(err)
   }
@@ -85,7 +88,8 @@ export async function getSingleUserByEmail(email) {
     const collection = client.db(dbName).collection(process.env.MONGO_DB_USER_COLLECTION)
     const data = await collection.find(query).toArray()
     console.debug(`Found ${data.length} user${data.length > 1 ? 's' : ''}: ${JSON.stringify(data)}`)
-    return JSON.stringify(data)
+    const sanitizedData = sanitizeData(data)
+    return JSON.stringify(sanitizedData)
   } catch (err) {
     console.error(err)
   }
@@ -94,6 +98,11 @@ export async function getSingleUserByEmail(email) {
 /**
  * Adds a new user to the database
  * @param {object} user - user object
+ * @param {string} user.username - username
+ * @param {string} user.name - name
+ * @param {string} user.email - email
+ * @param {object} user.github - github object from the graphql request (optional)
+ * @param {string} access_token - access token from the OAuth request (optional)
  * @returns {Promise<void>}
  */
 export async function addUser(user) {
@@ -135,7 +144,11 @@ export async function addUser(user) {
       createdDate: createdTimestamp,
       updatedDate: createdTimestamp,
     },
-    accounts: [],
+    github: user.github || {},
+  }
+
+  if (user.access_token) {
+    userDoc.access_token = user.access_token
   }
 
   // Insert into the database and return the result
@@ -213,3 +226,24 @@ async function getHighestUserId() {
 
 // Required Fields in order to create a new user
 const requiredFields = ['username', 'name', 'email']
+
+/**
+ *
+ * @param {Array} data - the user data to sanitize of sensitive information
+ * @returns {Array} - the sanitized user data
+ */
+function sanitizeData(data) {
+  const sanitizedData = data.map((user) => {
+    delete user?.email
+    delete user?.github?.id
+    delete user?.github?.databaseId
+    delete user?.github?.email
+    delete user?.github?.socialAccounts
+    delete user?.github?.twitterUsername
+    delete user?.github?.websiteUrl
+    delete user?.github?.url
+    delete user?.access_token
+    return user
+  })
+  return sanitizedData
+}

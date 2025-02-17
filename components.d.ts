@@ -29,6 +29,7 @@ declare module 'vue' {
     PullRequestsPanel: typeof import('./src/components/UserCard/PullRequestsPanel.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Skeleton: typeof import('primevue/skeleton')['default']
     Tab: typeof import('primevue/tab')['default']
     TabList: typeof import('primevue/tablist')['default']
     TabPanel: typeof import('primevue/tabpanel')['default']

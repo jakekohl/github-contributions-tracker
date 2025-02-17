@@ -1,4 +1,5 @@
 import './assets/main.css'
+import 'dotenv/config'
 
 import { createApp } from 'vue'
 import PrimeVue from 'primevue/config'
