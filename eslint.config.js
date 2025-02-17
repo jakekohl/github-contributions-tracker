@@ -3,6 +3,8 @@ import pluginVue from 'eslint-plugin-vue'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 import pluginCypress from 'eslint-plugin-cypress/flat'
 import pluginChaiFriendly from 'eslint-plugin-chai-friendly'
+import pluginCypress from 'eslint-plugin-cypress/flat'
+import pluginChaiFriendly from 'eslint-plugin-chai-friendly'
 
 export default [
   {
@@ -25,7 +27,7 @@ export default [
 
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
-  ...pluginCypress.configs.recommended,
-  ...pluginChaiFriendly.configs.recommendedFlat,
+  pluginCypress.configs.recommended,
+  pluginChaiFriendly.configs.recommendedFlat,
   skipFormatting,
 ]

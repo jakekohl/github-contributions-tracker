@@ -12,6 +12,9 @@
     "build:doppler": "doppler run -- npm run build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
+    "lint:api": "eslint ./api/** --fix",
+    "lint:app": "eslint ./src/** --fix",
+    "lint:cypress": "eslint ./cypress/** --fix",
     "format": "prettier --write src/"
   },
   "repository": {
