@@ -1,5 +1,5 @@
 <template>
-  <Toolbar class="bottom-info fixed-bottom">
+  <Toolbar class="bottom-info fixed-bottom" data-test="bottom-info">
     <template #end>
       <div>Personal project by <a href="https://github.com/jakekohl">Jacob Kohl</a></div>
     </template>

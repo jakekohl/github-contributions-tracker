@@ -8,5 +8,11 @@ const isProvisioning = ref(false)
   <h1>Sign Up</h1>
   <p>Sign up to track your GitHub contributions and visualize your progress.</p>
   <br />
-  <Button as="a" label="Sign Up with GitHub" icon="pi pi-github" :disabled="isProvisioning" />
+  <Button
+    as="a"
+    label="Sign Up with GitHub"
+    icon="pi pi-github"
+    data-test="sign-up"
+    :disabled="isProvisioning"
+  />
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about" data-test="about-section">
     <h1>About</h1>
     <p>
       Welcome to the GitHub Contributions Tracker! This project aims to provide a simple and

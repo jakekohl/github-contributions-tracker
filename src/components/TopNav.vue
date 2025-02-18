@@ -2,13 +2,19 @@
   <div class="card top-nav">
     <Menubar :model="items">
       <template #start>
-        <RouterLink to="/">
+        <RouterLink to="/" data-test="topNav-home">
           <i class="pi pi-github p-mr-2" style="font-size: 1.5rem" />
         </RouterLink>
       </template>
       <template #item="{ item, props, hasSubmenu }">
         <div class="card">
-          <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+          <router-link
+            v-if="item.route"
+            v-slot="{ href, navigate }"
+            :to="item.route"
+            :data-test="item.dataTest"
+            custom
+          >
             <a v-ripple :href="href" v-bind="props.action" @click="navigate" class="ripple">
               <span :class="item.icon" />
               <span>{{ item.label }}</span>
@@ -20,6 +26,7 @@
             :href="item.url"
             :target="item.target"
             v-bind="props.action"
+            :data-test="item.dataTest"
             class="ripple"
           >
             <span :class="item.icon" />
@@ -50,11 +57,13 @@ const items = ref([
     label: 'About',
     icon: 'pi pi-info-circle',
     command: () => router.push({ name: 'about' }),
+    dataTest: 'topNav-about',
   },
   {
     label: 'Your GitHub Stats',
     icon: 'pi pi-user',
     command: () => router.push({ name: 'user' }),
+    dataTest: 'topNav-user',
   },
 ])
 </script>

@@ -12,6 +12,7 @@ const redirect_uri = import.meta.env.VITE_GH_REDIRECT_URI
     as="a"
     label="Get Started"
     icon="pi pi-github"
+    :data-test="`get-started`"
     :href="`https://github.com/login/oauth/authorize?scope=${scope}&client_id=${client_id}&redirect_uri=${redirect_uri}`"
   />
 </template>

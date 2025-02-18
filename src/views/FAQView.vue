@@ -4,20 +4,24 @@ const questions = [
     question: 'What is GitHub Contributions Tracker?',
     answer:
       'GitHub Contributions Tracker is a tool that allows you to track your GitHub contributions and visualize your progress.',
+    dataTest: 'faq-what',
   },
   {
     question: 'How do I get started?',
     answer:
       'Click the "Get Started" button below to authenticate with GitHub and start tracking your contributions.',
+    dataTest: 'faq-started',
   },
   {
     question: 'How do I view my GitHub stats?',
     answer:
       'Click the "Your GitHub Stats" button in the top navigation bar to view your GitHub stats.',
+    dataTest: 'faq-stats',
   },
   {
     question: 'How do I contribute to this project?',
     answer: 'You can contribute to this project by submitting a pull request on GitHub.',
+    dataTest: 'faq-contribute',
   },
 ]
 </script>
@@ -29,13 +33,13 @@ const questions = [
     <Divider />
     <Accordion>
       <template #header>
-        <div class="flex justify-between">
+        <div class="flex justify-between" :data-test="`${question.dataTest}-question`">
           <h3>{{ question.question }}</h3>
           <i class="pi pi-chevron-down" />
         </div>
       </template>
       <template #content>
-        <p>{{ question.answer }}</p>
+        <p :data-test="`${question.dataTest}-answer`">{{ question.answer }}</p>
       </template>
     </Accordion>
   </Card>

@@ -20,26 +20,31 @@ export default {
           title: 'Overview',
           component: markRaw(OverviewPanel),
           value: '0',
+          dataTest: 'user-overview',
         },
         {
           title: 'Commits',
           component: markRaw(CommitsPanel),
           value: '1',
+          dataTest: 'user-commits',
         },
         {
           title: 'Pull Requests',
           component: markRaw(PullRequestsPanel),
           value: '2',
+          dataTest: 'user-pull-requests',
         },
         {
           title: 'Code Reviews',
           component: markRaw(CodeReviewsPanel),
           value: '3',
+          dataTest: 'user-code-reviews',
         },
         {
           title: 'Issues',
           component: markRaw(IssuesPanel),
           value: '4',
+          dataTest: 'user-issues',
         },
       ],
       isLoading: false,
@@ -93,13 +98,13 @@ export default {
 </script>
 
 <template>
-  <Card class="user-card">
+  <Card class="user-card" data-test="user-view">
     <template #title>
       <Toast ref="toast" :autoZIndex="true" position="bottom-right" />
       <span class="p-mr-2">
-        <Avatar size="large" class="p-mr-2 gap-2" />
+        <Avatar size="large" class="p-mr-2 gap-2" data-test="user-avatar" />
         <span /> <span /> <span />
-        <span class="p-mr-2 gap-2">USERNAME GOES HERE</span>
+        <span class="p-mr-2 gap-2" data-test="user-handle">USERNAME GOES HERE</span>
         <span /> <span /> <span />
         <span class="p-mr-2 gap-2">
           <Button
@@ -108,6 +113,7 @@ export default {
             size="small"
             rounded
             raised
+            data-test="user-sync"
             @click="syncUserStats()"
           />
         </span>
@@ -117,12 +123,23 @@ export default {
     <template #content>
       <Tabs value="0" @change="routerUpdate()">
         <TabList>
-          <Tab v-ripple v-for="tab in tabs" :key="tab.title" :value="tab.value">{{
-            tab.title
-          }}</Tab>
+          <Tab
+            v-ripple
+            v-for="tab in tabs"
+            :key="tab.title"
+            :value="tab.value"
+            :data-test="`user-tab-${tab.title.toLowerCase()}`"
+            >{{ tab.title }}</Tab
+          >
         </TabList>
         <TabPanels>
-          <TabPanel v-for="tab in tabs" :key="tab.value" :value="tab.value" :aria-label="tab.title">
+          <TabPanel
+            v-for="tab in tabs"
+            :key="tab.value"
+            :value="tab.value"
+            :aria-label="tab.title"
+            :data-test="`user-tabPanel-${tab.title.toLowerCase()}`"
+          >
             <BlockUI :blocked="isLoading">
               <ProgressSpinner v-if="isLoading && !isSyncing" />
               <component v-else :is="tab.component" />
