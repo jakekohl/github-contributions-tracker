@@ -2,7 +2,9 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import PrimeVue from 'primevue/config'
+import Ripple from 'primevue/ripple'
 import ToastService from 'primevue/toastservice'
+import primevue from '@/util/primevue.js'
 import Aura from '@primevue/themes/aura'
 import App from './App.vue'
 import router from './router/index.js'
@@ -21,5 +23,10 @@ app
     ripple: true,
   })
   .use(ToastService)
+  .directive('ripple', Ripple)
+// loads all primevue components defined in @src/util/primevue.js
+for (const component in primevue) {
+  app.component(component, primevue[component])
+}
 
 app.mount('#app')

@@ -9,12 +9,19 @@
       <template #item="{ item, props, hasSubmenu }">
         <div class="card">
           <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-            <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+            <a v-ripple :href="href" v-bind="props.action" @click="navigate" class="ripple">
               <span :class="item.icon" />
               <span>{{ item.label }}</span>
             </a>
           </router-link>
-          <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action">
+          <a
+            v-else
+            v-ripple
+            :href="item.url"
+            :target="item.target"
+            v-bind="props.action"
+            class="ripple"
+          >
             <span :class="item.icon" />
             <span>{{ item.label }}</span>
             <span v-if="hasSubmenu" class="pi pi-fw pi-angle-down" />
@@ -23,7 +30,7 @@
       </template>
       <template #end>
         <span>
-          <router-link to="/faq" v-ripple>
+          <router-link to="/faq" v-ripple class="ripple">
             <i class="pi pi-question-circle p-mr-2" style="font-size: 1.5rem" />
           </router-link>
         </span>

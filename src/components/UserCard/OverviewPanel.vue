@@ -1,7 +1,3 @@
 <template>
-  <div>
-    <p>Joined on:</p>
-    <p>Followers:</p>
-    <p>Following:</p>
-  </div>
+  <div class="card"></div>
 </template>
